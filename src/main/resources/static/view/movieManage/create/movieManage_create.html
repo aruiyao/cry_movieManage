@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>登录</title>
+  <link rel="stylesheet" href="/movieManage/css/bootstrap.css">
+  <link rel="stylesheet" href="/movieManage/css/reset.css">
+  <link rel="stylesheet" href="/movieManage/css/login.css">
+  <link rel="stylesheet" href="/movieManage/css/bootstrapValidator.css">
+  <script src="/movieManage/3rd/jquery.js"></script>
+  <script src="/movieManage/3rd/bootstrap.js"></script>
+  <script src="/movieManage/3rd/bootstrapValidator.js"></script>
+  <script src="/movieManage/3rd/angular-1.4.6.js"></script>
+  <script src="movieManage_create.js"></script>
+</head>
+
+<body ng-app="movieManageCreateApp" ng-controller="movieManageCreateCtrl" ng-init="init()">
+  <div style="padding: 0 50px 100px 50px">
+    <h3>添加影片</h3>
+    <div style="padding: 30px 0">
+      <div class="form-horizontal">
+        <div class="form-group">
+          <label for="movieName" class="col-sm-2 control-label">影片名称</label>
+          <div class="col-sm-5">
+            <input type="text" class="form-control" id="movieName" placeholder="" ng-model="name">
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="picture" class="col-sm-2 control-label">影片主图</label>
+          <div class="col-sm-5">
+            <img ng-src="{{imgUrl}}" style="width: 160px; height:160px;border: 1px solid #cccccc" ng-show="picture!==''">
+            <form enctype="multipart/form-data" id="uploadForm">
+              <input type="file" name="uploadFile" id="upload_file" style="margin-bottom:10px;">
+              <input type="button" id="uploadPicButton" value="上传" ng-click="uploadImage()">
+            </form>
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="releaseTime" class="col-sm-2 control-label">上映时间</label>
+          <div class="col-sm-5">
+            <input type="text" class="form-control" id="releaseTime" placeholder="" ng-model="releaseTime">
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="director" class="col-sm-2 control-label">导演</label>
+          <div class="col-sm-5">
+            <input type="text" class="form-control" id="director" placeholder="" ng-model="director">
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="leadRole" class="col-sm-2 control-label">主演</label>
+          <div class="col-sm-5">
+            <input type="text" class="form-control" id="leadRole" placeholder="" ng-model="leadRole">
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="screenwriter" class="col-sm-2 control-label">编剧</label>
+          <div class="col-sm-5">
+            <input type="text" class="form-control" id="screenwriter" placeholder="" ng-model="screenwriter">
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="type" class="col-sm-2 control-label">类型</label>
+          <div class="col-sm-5">
+            <select class="form-control" id="type" ng-model="type" ng-options="o.id as o.name for o in typeList track by o.id">
+                <option value="" hidden>喜剧</option>
+          </select>
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="filmLength" class="col-sm-2 control-label">片长</label>
+          <div class="col-sm-5">
+            <input type="text" class="form-control" id="filmLength" placeholder="" ng-model="filmLength">
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="alias" class="col-sm-2 control-label">别名</label>
+          <div class="col-sm-5">
+            <input type="text" class="form-control" id="alias" placeholder="" ng-model="alias">
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="synopsis" class="col-sm-2 control-label">简介</label>
+          <div class="col-sm-5">
+            <textarea type="text" class="form-control" id="synopsis" placeholder="" style="height: 150px;" ng-model="synopsis"></textarea>
+          </div>
+        </div>
+        <div class="form-group">
+          <div class="col-sm-offset-2 col-sm-10">
+            <button class="btn btn-primary" ng-click="create()">确认提交</button>
+            <button class="btn btn-default" ng-click="cancle()" style="margin-left: 50px">取消</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- 模态框 -->
+    <div class="modal fade" tabindex="-1" role="dialog" id="myModal" data-backdrop="static" data-keyboard="false">
+      <div class="modal-dialog modal-sm" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close" ng-click="sure()"><span aria-hidden="true">&times;</span></button>
+            <h4 class="modal-title">创建影片</h4>
+          </div>
+          <div class="modal-body">
+            <p class="text-center">创建成功</p>
+          </div>
+          <div class="modal-footer">
+            <!-- <button type="button" class="btn btn-default" data-dismiss="modal">Close</button> -->
+            <button type="button" class="btn btn-primary" ng-click="sure()">确认</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+
+</html>

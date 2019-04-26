@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>登录</title>
+  <link rel="stylesheet" href="/movieManage/css/bootstrap.css">
+  <link rel="stylesheet" href="/movieManage/css/reset.css">
+  <link rel="stylesheet" href="/movieManage/css/login.css">
+  <script src="/movieManage/3rd/jquery.js"></script>
+  <script src="/movieManage/3rd/bootstrap.js"></script>
+  <script src="/movieManage/3rd/angular-1.4.6.js"></script>
+  <script src="movieManage_detail.js"></script>
+  <style>
+    .second-label {
+      text-align: left !important;
+      font-weight: normal;
+    }
+  </style>
+</head>
+
+<body ng-app="movieManageDetailApp" ng-controller="movieManageDetailCtrl" ng-init="init()">
+  <div style="padding: 0 50px 100px 50px">
+    <h3>影片详情</h3>
+    <div style="padding: 30px 0">
+      <div class="form-horizontal">
+        <div class="form-group">
+          <label for="movieName" class="col-sm-2 control-label">影片名称</label>
+          <label class="col-sm-5 control-label second-label" ng-bind="movie.name"></label>
+        </div>
+        <div class="form-group">
+          <label for="picture" class="col-sm-2 control-label">影片主图</label>
+          <div class="col-sm-5">
+            <img ng-src="{{downUrl + '?imageName=' + movie.picture}}" style="width: 160px; height:160px;border: 1px solid #cccccc"
+              ng-show="movie.picture!='' && movie.picture!=null">
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="releaseTime" class="col-sm-2 control-label">上映时间</label>
+          <label class="col-sm-5 control-label second-label" ng-bind="movie.releaseTime"></label>
+        </div>
+        <div class="form-group">
+          <label for="director" class="col-sm-2 control-label">导演</label>
+          <label class="col-sm-5 control-label second-label" ng-bind="movie.director"></label>
+        </div>
+        <div class="form-group">
+          <label for="leadRole" class="col-sm-2 control-label">主演</label>
+          <label class="col-sm-5 control-label second-label" ng-bind="movie.leadRole"></label>
+        </div>
+        <div class="form-group">
+          <label for="screenwriter" class="col-sm-2 control-label">编剧</label>
+          <label class="col-sm-5 control-label second-label" ng-bind="movie.screenwriter"></label>
+        </div>
+        <div class="form-group">
+          <label for="type" class="col-sm-2 control-label">类型</label>
+          <label class="col-sm-5 control-label second-label">
+            <span ng-show="movie.type===1">喜剧</span>
+            <span ng-show="movie.type===2">爱情</span>
+            <span ng-show="movie.type===3">动作</span>
+          </label>
+        </div>
+        <div class="form-group">
+          <label for="filmLength" class="col-sm-2 control-label">片长</label>
+          <label class="col-sm-5 control-label second-label">
+            <span ng-bind="movie.filmLength"></span>分钟
+          </label>
+        </div>
+        <div class="form-group">
+          <label for="alias" class="col-sm-2 control-label">别名</label>
+          <label class="col-sm-5 control-label second-label" ng-bind="movie.alias"></label>
+        </div>
+        <div class="form-group">
+          <label for="synopsis" class="col-sm-2 control-label">简介</label>
+          <label class="col-sm-5 control-label second-label" ng-bind="movie.synopsis"></label>
+        </div>
+        <div class="form-group">
+          <div class="col-sm-offset-2 col-sm-10">
+            <button class="btn btn-primary" ng-click="goBack()">返回</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+
+</html>
